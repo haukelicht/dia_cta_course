@@ -1,0 +1,17 @@
+**/.DS_Store
+
+.Rproj.user
+.Renviron
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+admin/
+assignments/
+code/
+slides/
+src/
+syllabus/
+
+README.html

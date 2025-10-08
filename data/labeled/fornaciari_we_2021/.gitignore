@@ -1,0 +1,13 @@
+*.ipynb
+
+fornaciari_we_2021-*.tsv
+raw.xlsx
+
+annotation_set_*.csv
+!annotation_set_01.csv
+annotation_set_*.jsonl
+
+annotations/extraction
+annotations/**/xx_deprecated
+
+
