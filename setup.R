@@ -5,7 +5,7 @@ if (!"renv" %in% row.names(installed.packages())) {
 
 if (file.exists("renv.lock")) {
   renv::activate()
-  renv::restore()
+  renv::load()
 } else {
   renv::init(bare = TRUE)
   pkgs <- readLines("requirements.txt")
