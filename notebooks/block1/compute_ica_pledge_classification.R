@@ -57,17 +57,22 @@ annotations <- map_dfr(set_names(csv_files), read_csv, .id = "file", show_col_ty
 
 stopifnot(
   "CSV files must have columns 'text_id', 'text', 'label'" = length(setdiff(c("text_id", "text", "label"), names(annotations))) == 0,
-  "Label values must be either 'Pledge' or 'No Pledge'" = all(annotations$label %in% c("Pledge", "No Pledge")),
+  "Label values must be either 'Pledge' or 'No Pledge'" = all(na.omit(annotations$label) %in% c("Pledge", "No Pledge")),
   "No rows loaded from annotation JSONL files." = nrow(annotations)>0
 )
 
 annotations$annotator <- str_remove(basename(annotations$file), "\\.csv")
 annotations$file <- NULL
 
-# sanity check
+# look at the resulting data frame
+View(arrange(annotations, text_id, annotator))
+
+# tabulate number of times each annotator has assigned a given category
 annotations |> 
   count(annotator, label) |> 
   arrange(annotator, desc(n))
+# NOTE: if there are NAs here, this is because someone "checked" an example in 
+#       doccano without choosing a label category
 
 # Step 2: compute K's alpha ----
 
@@ -80,10 +85,21 @@ annotations_matrix <- annotations |>
   select(-annotator) |> 
   as.matrix()
 
+annotations_matrix
 # compute Krippendorff's alpha (nominal)
 # NOTE: irr::kripp.alpha expects a matrix with raters in rows, items in columns
 irr::kripp.alpha(annotations_matrix, method = "nominal")
 
+# INTERPRETATION
+#
+# - K's alpha ranges between -1 and 1
+#   - +1 indicates perfect agreement
+#   -  0 indicates level of disagreement as would be expected by chance
+#   - -1 indicates absolute disagreement
+# - there are thresholds conventionally applied (based on Krippendorff cited in Neuendorff 2017):
+#   - alpha ≥ 0.8 is good and the measurement is reliable
+#   - 0.667 ≤ alpha < 0.8 is still tolerable (draw only tentative conclusions based on this measurement)
+#   - alpha < 0.667 is not acceptable (unreliable measurement)
 
 # Step 3: sentence-level disagreement analysis ----
 
@@ -110,6 +126,23 @@ entropies <- annotations |>
 entropies |>
   count(entropy) |> 
   arrange(entropy)
+
+# INTERPRETATION
+#
+# - entropy measures disorder in a set
+# - normalized entropy ranges between 0 and 1
+# - if all annotators agree on the same label, there is no disorder => (normalized) entropy = 0
+# - if annotators are split evenly across all possible labels, there is maximum disorder => (normalized) entropy = 1
+#   - note that this is impossible with an even number of annotators and binary labels ;)
+
+#   - +1 indicates perfect agreement
+#   -  0 indicates level of disagreement as would be expected by chance
+#   - -1 indicates absolute disagreement
+# - there are thresholds conventionally applied (based on Krippendorff cited in Neuendorff 2017):
+#   - alpha ≥ 0.8 is good and the measurement is reliable
+#   - 0.667 ≤ alpha < 0.8 is still tolerable (draw only tentative conclusions based on this measurement)
+#   - alpha < 0.667 is not acceptable (unreliable measurement)
+
 
 # get disagreement instances (entropy < 1)
 disagreement_cases <- entropies |> 
