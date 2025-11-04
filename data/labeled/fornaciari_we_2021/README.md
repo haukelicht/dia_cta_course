@@ -1,7 +1,7 @@
 # Sentence-level policy pledge annotations of English and Swedish manifesto sentences
 
 Paper: Fornaciari et al. ([2021](https://doi.org/10.18653/v1/2021.findings-acl.301))
-Data: [Github](https://github.com/fornaciari/MiMac_taxes/raw/refs/heads/main/jupyter_xsl_preproc_210130170501/all210126.xlsx)
+Source data: [Github](https://github.com/fornaciari/MiMac_taxes/raw/refs/heads/main/jupyter_xsl_preproc_210130170501/all210126.xlsx)
 
 ## Definition of pledge
 
@@ -16,3 +16,19 @@ Fornaciari et al. point to Thomson et al.'s' ([2017](https://doi.org/10.1111/ajp
 > We define a pledge as **a statement committing a party to one specific action or outcome that can be clearly determined to have occurred or not** [*post hoc*].
 
 However, Thomson et al. discuss the pros and cons of this narrow definition (see the [Supporting Information](https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2Fajps.12313&file=ajps12313-sup-0001-SuppMat.pdf) for their paper).
+
+## Datasets
+
+I provide one data set based on the 
+
+`pledge_binary`: This dataset records manifesto texts classified by human coders according to whether or not a sentence contains a pledge.
+
+- texts are in column `text`
+- classification are in column `label` and `1` for pledges and otherwise `0`
+- metadata (columns `metadata__*`) records party and year of manifesto
+
+### Download data files
+
+| dataset key            | file                                           | url                                                                                                                                   |
+|:-----------------------|:-----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------|
+| fornaciari_we_2021 | fornaciari_we_2021-pledge_binary.tsv | https://cta-text-datasets.s3.eu-central-1.amazonaws.com/labeled/fornaciari_we_2021/fornaciari_we_2021-pledge_binary.tsv |
