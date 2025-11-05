@@ -3120,7 +3120,7 @@ vertical-align: -.125em;
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">Sys.getenv</span>(<span class="st">&quot;HUGGINGFACE_API_KEY&quot;</span>, <span class="at">unset =</span> <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>If this returns <code>FALSE</code>, something went wrong. Please ask me for help in this case.</p></li>
 </ol>
-<div class="callout callout-style-default callout-warning callout-titled" title="cloud usage">
+<div class="callout callout-style-default callout-note callout-titled" title="cloud usage">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3137,7 +3137,7 @@ cloud usage
 </ol>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Costs">
+<div class="callout callout-style-default callout-warning callout-titled" title="Costs">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -3147,7 +3147,26 @@ Costs
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>I will cover the costs arising for your LLM usage during this course (up to $4 per person).</p>
+<p>Generating responses with an LLM with the API token costs money. This money is charged on my account. I will cover the costs arising for your LLM usage during this course (up to $4 per person).</p>
+<p>So please <strong>be careful when using LLM in R with my API token</strong>. In particular:</p>
+<ol type="1">
+<li>Test your LLM text classification code always only with a handful of texts.</li>
+<li>Avoid just clicking on “Run all” all the time and execute relevant lines selectively in your R scripts.</li>
+<li>If running a code line or block that triggers an LLM API requests (e.g., <code>model$chat()</code>) results in an error, first make sure that you understand the source of the error instead of trying to run it again and again.</li>
+</ol>
+<p>Should I see that someone uses the API token excessively, I’ll ultimately need to revoke their access to it.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Future use">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Future use
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>In the future, you’ll need to setup your own Hugging Face Pro account and pay for LLM usage yourself (see <a href="https://huggingface.co/pro">here</a> and <a href="https://huggingface.co/settings/tokens">here</a>)</p>
 </div>
 </div>

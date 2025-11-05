@@ -152,8 +152,8 @@ response_format <- type_object(
 #       use `usethis::edit_r_environ()` to open the file in RStudio
 stopifnot("HUGGINGFACE_API_KEY env variable not see" = !is.na(Sys.getenv("HUGGINGFACE_API_KEY", unset = NA)))
 
-# NOTE: here we use the OpenAI's open-source 20B parameter model via the provider Together AI
-model_id = "openai/gpt-oss-20b:together"
+# NOTE: here we use the OpenAI's open-source 20B parameter model via the provider _Together AI_
+model_id <- "openai/gpt-oss-20b:together"
 
 model <- chat_huggingface(
   system_prompt = instructions,

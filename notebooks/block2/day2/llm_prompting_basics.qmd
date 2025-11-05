@@ -70,7 +70,7 @@ To access this API, you need to insert the API key to the `.Renviron` file in yo
    If this returns `FALSE`, something went wrong. 
    Please ask me for help in this case.
 
-::: {.callout-warning title="cloud usage"}
+::: {.callout-note title="cloud usage"}
 
 Using models hosted by Hugging Face and its inference providers in the cloud means that
 
@@ -79,9 +79,25 @@ Using models hosted by Hugging Face and its inference providers in the cloud mea
 
 :::
 
-::: {.callout-note title="Costs"}
+::: {.callout-warning title="Costs"}
 
+Generating responses with an LLM with the API token costs money. 
+This money is charged on my account. 
 I will cover the costs arising for your LLM usage during this course (up to $4 per person).
+
+So please **be careful when using LLM in R with my API token**.
+In particular:
+
+1. Test your LLM text classification code always only with a handful of texts.
+2. Avoid just clicking on "Run all" all the time and execute relevant lines selectively in your R scripts.
+3. If running a code line or block that triggers an LLM API requests (e.g., `model$chat()`) results in an error, first make sure that you understand the source of the error instead of trying to run it again and again.
+
+Should I see that someone uses the API token excessively, I'll ultimately need to revoke their access to it.
+
+
+:::
+
+::: {.callout-note title="Future use"}
 
 In the future, you'll need to setup your own Hugging Face Pro account and pay for LLM usage  yourself (see [here](https://huggingface.co/pro) and [here](https://huggingface.co/settings/tokens))
 
