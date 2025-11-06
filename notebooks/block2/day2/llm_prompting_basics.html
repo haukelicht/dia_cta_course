@@ -3112,9 +3112,9 @@ vertical-align: -.125em;
 <p>We will use the Hugging Face Inference Providers API as our LLM backend. This means that the LLMs we prompt are running in the cloud. We therefore use an <a href="https://en.wikipedia.org/wiki/API">API</a> to send our prompts to the model and the API also sends back the requests to us.</p>
 <p>To access this API, you need to insert the API key to the <code>.Renviron</code> file in your current <em>RStudio</em> R project:</p>
 <ol type="1">
-<li><p>Open your R project in RStudio by running <code>usethis::proj_set(scope = &quot;project&quot;)</code></p></li>
+<li><p>Open your R project in RStudio by running <code>usethis::edit_r_environ(scope = &quot;project&quot;)</code></p></li>
 <li><p>In the file that is opened in RStudio, insert in a new line the text <code>HUGGINGFACE_API_KEY=</code></p></li>
-<li><p>Paste the API key I have emailed your after the <code>=</code> sign (without any white spaces)</p></li>
+<li><p>Paste the API key I have posted in the <strong><em>Moodle Announcements</em></strong> your after the <code>=</code> sign (without any white spaces)</p></li>
 <li><p>Save the file and restart R (Session -&gt; Restart R in RStudio)</p></li>
 <li><p>Verify that this succeeded by running the line</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">Sys.getenv</span>(<span class="st">&quot;HUGGINGFACE_API_KEY&quot;</span>, <span class="at">unset =</span> <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

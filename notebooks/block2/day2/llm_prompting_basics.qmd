@@ -59,9 +59,9 @@ We therefore use an [API](https://en.wikipedia.org/wiki/API) to send our prompts
 
 To access this API, you need to insert the API key to the `.Renviron` file in your current _RStudio_ R project:
 
-1. Open your R project in RStudio by running `usethis::proj_set(scope = "project")`
+1. Open your R project in RStudio by running `usethis::edit_r_environ(scope = "project")`
 2. In the file that is opened in RStudio, insert in a new line the text `HUGGINGFACE_API_KEY=`
-3. Paste the API key I have emailed your after the `=` sign (without any white spaces)
+3. Paste the API key I have posted in the **_Moodle Announcements_** your after the `=` sign (without any white spaces)
 4. Save the file and restart R (Session -> Restart R in RStudio)
 5. Verify that this succeeded by running the line
    ```r
