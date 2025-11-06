@@ -29,6 +29,6 @@ df_train, df_val = train_test_split(df_train, test_size=0.1, stratify=df_train['
 split_dir = fp.parent / "splits"
 split_dir.mkdir(parents=True, exist_ok=True)
 
-df_train.to_csv(split_dir / "train.csv", index=False)
-df_val.to_csv(split_dir / "dev.csv", index=False)
-df_test.sample(n=200, random_state=42).to_csv(split_dir / "test.csv", index=False)
+df_train.to_csv(split_dir / "train.tsv", sep="\t", index=False)
+df_val.to_csv(split_dir / "dev.tsv", sep="\t", index=False)
+df_test.sample(n=200, random_state=42).to_csv(split_dir / "test.tsv", sep="\t", index=False)
