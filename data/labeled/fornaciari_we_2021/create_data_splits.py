@@ -31,4 +31,4 @@ split_dir.mkdir(parents=True, exist_ok=True)
 
 df_train.to_csv(split_dir / "train.csv", index=False)
 df_val.to_csv(split_dir / "val.csv", index=False)
-df_test.to_csv(split_dir / "test.csv", index=False)
+df_test.sample(n=200, random_state=42).to_csv(split_dir / "test.csv", index=False)
